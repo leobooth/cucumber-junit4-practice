@@ -8,8 +8,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/browserDrivers
-.idea/target
+.idea/browserDrivers/
+.idea/target/
 
 # Generated files
 .idea/**/contentModel.xml
