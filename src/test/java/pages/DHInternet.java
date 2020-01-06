@@ -7,7 +7,7 @@ public class DHInternet extends BasePage {
 
     private String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
 
-    public static void go() {
+    public void go() {
         webDriver.navigate().to(getURL());
     }
 
@@ -26,8 +26,8 @@ public class DHInternet extends BasePage {
         } catch (Exception e) {
             System.out.println(e);
             isClickSuccesful = false;
-        } finally {
-            return isClickSuccesful;
         }
+
+        return isClickSuccesful;
     }
 }

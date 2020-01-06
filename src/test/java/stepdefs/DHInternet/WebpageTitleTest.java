@@ -33,7 +33,7 @@ public class WebpageTitleTest {
     }
 
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
-    public void navigate_to_Dave_Haeffner_Internet() {
+    public void navigateToDaveHaeffnerInternet() {
         DHInternet.go();
     }
 
@@ -56,19 +56,19 @@ public class WebpageTitleTest {
     }
 
     @Then("^the webpage title should be \"(.*)\"$")
-    public void verify_webpage_title(String expectedTitle) {
+    public void verifyWebpageTitle(String expectedTitle) {
         String actualTitle = webDriver.getTitle();
         Assert.assertEquals(expectedTitle, actualTitle);
     }
 
     @When("^I click the link \"(.*)\" on The Internet homepage$")
-    public void click_the_internet_homepage_link(String linkText) {
+    public void clickTheInternetHomepageLink(String linkText) {
         boolean isSuccessful = DHInternet.clickTheInternetLink(linkText);
         Assume.assumeTrue("Clicked link " + linkText, isSuccessful);
     }
 
     @Then("^I should see an authentication popup$")
-    public void verify_basic_auth_popup_exists() {
+    public void verifyBasicAuthPopupExists() {
         //TODO: handle the browser popup
     }
 }
