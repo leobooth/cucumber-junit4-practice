@@ -1,16 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DHInternet {
-    private WebDriver webDriver;
+public class DHInternet extends BasePage {
 
-    String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
+    private String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
 
-    public DHInternet(WebDriver webDriver){
-        this.webDriver = webDriver;
+    public static void go() {
+        webDriver.navigate().to(getURL());
     }
 
     public static String getURL() {

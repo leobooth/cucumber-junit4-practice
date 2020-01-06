@@ -1,4 +1,4 @@
-package stepdefs;
+package stepdefs.DHInternet;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -9,37 +9,32 @@ import org.junit.Assert;
 import org.junit.Assume;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.BasePage;
 import pages.DHInternet;
+import testEnvironment.BrowserSettings;
 
-public class StepDefinitions {
+public class WebpageTitleTest {
 
     private WebDriver webDriver;
     private DHInternet DHInternet;
 
-    @Before
-    public void setupChromeBrowser() {
-        String chromeDriverPath = "D:\\SideProjects\\SeleniumPractice\\Projects\\cucumber-junit4-practice\\.idea\\browserDrivers\\ChromeDriver\\v79.0.3945.36\\chromedriver_win32\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        webDriver = new ChromeDriver();
+    @Before("@BeforeVerifyWebpageTitle")
+    public void beforeVerifyWebpageTitle() {
+        webDriver = BrowserSettings.setDriver("CHROME");
+        BasePage.setWebDriver(webDriver);
+        DHInternet = new DHInternet();
     }
 
     @After
-    public void closeChromeBrowser() {
+    public void closeBrowser() {
         webDriver.quit();
-    }
-
-    @Given("^I navigate to the following URL: (.*)$")
-    public void navigate_to_URL(String url) {
-        webDriver.navigate().to(url);
     }
 
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
     public void navigate_to_Dave_Haeffner_Internet() {
-        navigate_to_URL("https://the-internet.herokuapp.com/");
-        DHInternet = new DHInternet(webDriver);
+        DHInternet.go();
     }
 
     @When("^the webpage loads within (\\d+) seconds$")
@@ -51,10 +46,10 @@ public class StepDefinitions {
         };
 
         try {
-            // sleep is used to allow humans to see the page load
-            Thread.sleep(1000);
             WebDriverWait wait = new WebDriverWait(webDriver, timeoutInSeconds);
             wait.until(isDoneLoading);
+            // sleep is used to allow humans to see the page
+            Thread.sleep(1000);
         } catch (Throwable error) {
             Assert.fail("The webpage failed to load within " + timeoutInSeconds + " seconds.");
         }
