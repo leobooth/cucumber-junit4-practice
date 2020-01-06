@@ -21,7 +21,8 @@ public class StepDefinitions {
 
     @Before
     public void setupChromeBrowser() {
-        System.setProperty("webdriver.chrome.driver", "D:\\SideProjects\\SeleniumPractice\\Projects\\cucumber-junit4-practice\\.idea\\browserDrivers\\ChromeDriver\\v79.0.3945.36\\chromedriver_win32\\chromedriver.exe");
+        String chromeDriverPath = "D:\\SideProjects\\SeleniumPractice\\Projects\\cucumber-junit4-practice\\.idea\\browserDrivers\\ChromeDriver\\v79.0.3945.36\\chromedriver_win32\\chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         webDriver = new ChromeDriver();
     }
 
@@ -37,7 +38,7 @@ public class StepDefinitions {
 
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
     public void navigate_to_Dave_Haeffner_Internet() {
-        webDriver.navigate().to("https://the-internet.herokuapp.com/");
+        navigate_to_URL("https://the-internet.herokuapp.com/");
         DHInternet = new DHInternet(webDriver);
     }
 
@@ -50,6 +51,7 @@ public class StepDefinitions {
         };
 
         try {
+            // sleep is used to allow humans to see the page load
             Thread.sleep(1000);
             WebDriverWait wait = new WebDriverWait(webDriver, timeoutInSeconds);
             wait.until(isDoneLoading);
