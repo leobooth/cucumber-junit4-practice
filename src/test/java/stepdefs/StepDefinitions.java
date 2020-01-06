@@ -12,16 +12,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.TheInternet;
+import pages.DHInternet;
 
 public class StepDefinitions {
 
     private WebDriver webDriver;
-    private TheInternet theInternet;
+    private DHInternet DHInternet;
 
     @Before
     public void setupChromeBrowser() {
-        System.setProperty("webdriver.chrome.driver", "D:\\Google Drive\\SeleniumPractice\\Projects\\cucumber-junit4-practice\\.idea\\browserDrivers\\ChromeDriver\\v76.0.3809.68\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\SideProjects\\SeleniumPractice\\Projects\\cucumber-junit4-practice\\.idea\\browserDrivers\\ChromeDriver\\v79.0.3945.36\\chromedriver_win32\\chromedriver.exe");
         webDriver = new ChromeDriver();
     }
 
@@ -38,7 +38,7 @@ public class StepDefinitions {
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
     public void navigate_to_Dave_Haeffner_Internet() {
         webDriver.navigate().to("https://the-internet.herokuapp.com/");
-        theInternet = new TheInternet(webDriver);
+        DHInternet = new DHInternet(webDriver);
     }
 
     @When("^the webpage loads within (\\d+) seconds$")
@@ -66,7 +66,7 @@ public class StepDefinitions {
 
     @When("^I click the link \"(.*)\" on The Internet homepage$")
     public void click_the_internet_homepage_link(String linkText) {
-        boolean isSuccessful = theInternet.clickTheInternetLink(linkText);
+        boolean isSuccessful = DHInternet.clickTheInternetLink(linkText);
         Assume.assumeTrue("Clicked link " + linkText, isSuccessful);
     }
 

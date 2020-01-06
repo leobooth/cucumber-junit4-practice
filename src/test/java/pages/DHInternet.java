@@ -4,13 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class TheInternet {
+public class DHInternet {
     private WebDriver webDriver;
 
     String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
 
-    public TheInternet(WebDriver webDriver){
+    public DHInternet(WebDriver webDriver){
         this.webDriver = webDriver;
+    }
+
+    public static String getURL() {
+        return "https://the-internet.herokuapp.com/";
     }
 
     public boolean clickTheInternetLink(String linkText) {

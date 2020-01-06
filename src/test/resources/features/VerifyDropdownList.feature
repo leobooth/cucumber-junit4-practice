@@ -1,4 +1,3 @@
-@RunMe
 Feature: verify dropdown list
 
   Scenario: select an option from a dropdown list
