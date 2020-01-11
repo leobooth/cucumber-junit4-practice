@@ -8,4 +8,8 @@ public class BasePage {
     public static void setWebDriver(WebDriver webDriver) {
         BasePage.webDriver = webDriver;
     }
+
+    public void go(String url) {
+        webDriver.navigate().to(url);
+    }
 }

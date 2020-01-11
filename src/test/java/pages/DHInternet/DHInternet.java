@@ -6,13 +6,15 @@ import pages.BasePage;
 
 public class DHInternet extends BasePage {
 
-    private String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
+    private BasicAuthPopup basicAuthPopup;
 
-    public void go() {
-        webDriver.navigate().to(getURL());
+    public DHInternet() {
+        this.basicAuthPopup = new BasicAuthPopup();
     }
 
-    public static String getURL() {
+    private String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
+
+    public String getURL() {
         return "https://the-internet.herokuapp.com/";
     }
 
@@ -30,5 +32,9 @@ public class DHInternet extends BasePage {
         }
 
         return isClickSuccesful;
+    }
+
+    public BasicAuthPopup getBasicAuthPopup() {
+        return basicAuthPopup;
     }
 }

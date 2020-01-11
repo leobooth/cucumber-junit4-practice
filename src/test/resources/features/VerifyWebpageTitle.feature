@@ -1,5 +1,5 @@
 @BeforeVerifyDHInternet
-@RunMe
+
 Feature: Verify webpage title
 
   Scenario: Get title from webpage

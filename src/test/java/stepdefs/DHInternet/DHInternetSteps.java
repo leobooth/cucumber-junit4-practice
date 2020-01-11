@@ -18,13 +18,13 @@ import testEnvironment.BrowserSettings;
 public class DHInternetSteps {
 
     private WebDriver webDriver;
-    private DHInternet DHInternet;
+    private DHInternet dHInternet;
 
     @Before("@BeforeVerifyDHInternet")
     public void beforeVerifyDHInternet() {
         webDriver = BrowserSettings.setDriver("CHROME");
         BasePage.setWebDriver(webDriver);
-        DHInternet = new DHInternet();
+        dHInternet = new DHInternet();
     }
 
     @After
@@ -34,7 +34,7 @@ public class DHInternetSteps {
 
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
     public void navigateToDaveHaeffnerInternet() {
-        DHInternet.go();
+        dHInternet.go(dHInternet.getURL());
     }
 
     @When("^the webpage loads within (\\d+) seconds$")
@@ -63,12 +63,21 @@ public class DHInternetSteps {
 
     @When("^I click the link \"(.*)\" on The Internet homepage$")
     public void clickTheInternetHomepageLink(String linkText) {
-        boolean isSuccessful = DHInternet.clickTheInternetLink(linkText);
+        boolean isSuccessful = dHInternet.clickTheInternetLink(linkText);
         Assume.assumeTrue("Clicked link " + linkText, isSuccessful);
     }
 
     @Then("^I should see an authentication popup$")
     public void verifyBasicAuthPopupExists() {
         //TODO: handle the browser popup
+    }
+
+    @When("^I click the (\\w+) button in the Basic Auth popup$")
+    public void clickBasicAuthPopupButton(String button) {
+        switch (button.trim().toUpperCase()) {
+            case "CANCEL": {
+                dHInternet.getBasicAuthPopup().clickCancelButton();
+            }
+        }
     }
 }
