@@ -1,4 +1,4 @@
-@BeforeVerifyWebpageTitle
+@BeforeVerifyDHInternet
 @RunMe
 Feature: Verify webpage title
 

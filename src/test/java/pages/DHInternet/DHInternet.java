@@ -1,7 +1,8 @@
-package pages;
+package pages.DHInternet;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.BasePage;
 
 public class DHInternet extends BasePage {
 

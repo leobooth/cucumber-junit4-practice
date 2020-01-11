@@ -12,16 +12,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-import pages.DHInternet;
+import pages.DHInternet.DHInternet;
 import testEnvironment.BrowserSettings;
 
-public class WebpageTitleTest {
+public class DHInternetSteps {
 
     private WebDriver webDriver;
     private DHInternet DHInternet;
 
-    @Before("@BeforeVerifyWebpageTitle")
-    public void beforeVerifyWebpageTitle() {
+    @Before("@BeforeVerifyDHInternet")
+    public void beforeVerifyDHInternet() {
         webDriver = BrowserSettings.setDriver("CHROME");
         BasePage.setWebDriver(webDriver);
         DHInternet = new DHInternet();
