@@ -1,5 +1,5 @@
 @BeforeVerifyDHInternet
-
+@Demo
 Feature: Verify webpage title
 
   Scenario: Get title from webpage

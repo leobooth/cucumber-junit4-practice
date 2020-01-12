@@ -12,19 +12,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-import pages.DHInternet.DHInternet;
+import pages.DHInternet.DHInternetPage;
 import testEnvironment.BrowserSettings;
 
 public class DHInternetSteps {
 
     private WebDriver webDriver;
-    private DHInternet dHInternet;
+    private DHInternetPage dHInternet;
 
     @Before("@BeforeVerifyDHInternet")
     public void beforeVerifyDHInternet() {
         webDriver = BrowserSettings.setDriver("CHROME");
         BasePage.setWebDriver(webDriver);
-        dHInternet = new DHInternet();
+        dHInternet = new DHInternetPage();
     }
 
     @After
@@ -70,14 +70,5 @@ public class DHInternetSteps {
     @Then("^I should see an authentication popup$")
     public void verifyBasicAuthPopupExists() {
         //TODO: handle the browser popup
-    }
-
-    @When("^I click the (\\w+) button in the Basic Auth popup$")
-    public void clickBasicAuthPopupButton(String button) {
-        switch (button.trim().toUpperCase()) {
-            case "CANCEL": {
-                dHInternet.getBasicAuthPopup().clickCancelButton();
-            }
-        }
     }
 }

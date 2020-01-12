@@ -4,13 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.BasePage;
 
-public class DHInternet extends BasePage {
-
-    private BasicAuthPopup basicAuthPopup;
-
-    public DHInternet() {
-        this.basicAuthPopup = new BasicAuthPopup();
-    }
+public class DHInternetPage extends BasePage {
 
     private String THE_INTERNET_EXAMPLE_LINK_TEMPLATE = ".//h2[.='Available Examples']//following-sibling::ul/li/a[contains(text(),'LINK_TEXT')]";
 
@@ -32,9 +26,5 @@ public class DHInternet extends BasePage {
         }
 
         return isClickSuccesful;
-    }
-
-    public BasicAuthPopup getBasicAuthPopup() {
-        return basicAuthPopup;
     }
 }
