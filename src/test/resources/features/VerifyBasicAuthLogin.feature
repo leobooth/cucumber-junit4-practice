@@ -1,6 +1,6 @@
 @BeforeVerifyBasicAuthLogin
 @AfterVerifyBasicAuthLogin
-@RunMe
+@Demo
 Feature: verify login using basic authentication
 
   Scenario: attempt login with invalid username and password

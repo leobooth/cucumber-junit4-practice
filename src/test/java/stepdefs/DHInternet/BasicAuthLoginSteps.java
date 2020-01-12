@@ -49,11 +49,6 @@ public class BasicAuthLoginSteps {
                 popupURL, username, password));
     }
 
-    @Then("^I should see an authentication popup$")
-    public void verifyBasicAuthPopupExists() {
-        //TODO: handle the browser popup
-    }
-
     @Then("the Basic Auth success page (should|should not) be visible$")
     public void verifyBasicAuthSuccessPageIsOrIsNotVisible(String shouldOrShouldNot) {
         boolean isBasicAuthHeaderVisible = basicAuthLoginPO.isBasicAuthHeaderVisible(5);
