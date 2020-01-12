@@ -1,11 +1,12 @@
-@BeforeVerifyDHInternet
+@BeforeVerifyBasicAuthLogin
+@AfterVerifyBasicAuthLogin
 @RunMe
 Feature: verify login using basic authentication
 
-  Scenario: cancel basic authentication
-    Given I navigate to Dave Haeffner's website "The Internet"
-      And I click the link "Basic Auth" on The Internet homepage
-     #TODO: handle the browser popup
-     When I click the Cancel button in the Basic Auth popup
-#     Then the Basic Auth popup should not be visible
+  Scenario: attempt login with invalid username and password
+     When I authenticate using Basic Auth with invalid username and invalid password
+     Then the Basic Auth success page should not be visible
 
+  Scenario: attempt login with valid username and password
+    When I authenticate using Basic Auth with valid username and valid password
+    Then the Basic Auth success page should be visible

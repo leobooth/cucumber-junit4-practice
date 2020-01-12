@@ -1,4 +1,5 @@
 @BeforeVerifyDHInternet
+@AfterVerifyDHInternet
 @Demo
 Feature: Verify webpage title
 

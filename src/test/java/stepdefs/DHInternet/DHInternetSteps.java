@@ -12,29 +12,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-import pages.DHInternet.DHInternetPage;
+import pages.DHInternet.DHInternetPO;
 import testEnvironment.BrowserSettings;
 
 public class DHInternetSteps {
 
     private WebDriver webDriver;
-    private DHInternetPage dHInternet;
+    private DHInternetPO dhInternetPO;
 
     @Before("@BeforeVerifyDHInternet")
     public void beforeVerifyDHInternet() {
         webDriver = BrowserSettings.setDriver("CHROME");
         BasePage.setWebDriver(webDriver);
-        dHInternet = new DHInternetPage();
+        dhInternetPO = new DHInternetPO();
     }
 
-    @After
+    @After("@AfterVerifyDHInternet")
     public void closeBrowser() {
         webDriver.quit();
     }
 
     @Given("^I navigate to Dave Haeffner's website \"The Internet\"$")
     public void navigateToDaveHaeffnerInternet() {
-        dHInternet.go(dHInternet.getURL());
+        dhInternetPO.go(dhInternetPO.getURL());
     }
 
     @When("^the webpage loads within (\\d+) seconds$")
@@ -63,12 +63,7 @@ public class DHInternetSteps {
 
     @When("^I click the link \"(.*)\" on The Internet homepage$")
     public void clickTheInternetHomepageLink(String linkText) {
-        boolean isSuccessful = dHInternet.clickTheInternetLink(linkText);
+        boolean isSuccessful = dhInternetPO.clickTheInternetLink(linkText);
         Assume.assumeTrue("Clicked link " + linkText, isSuccessful);
-    }
-
-    @Then("^I should see an authentication popup$")
-    public void verifyBasicAuthPopupExists() {
-        //TODO: handle the browser popup
     }
 }
