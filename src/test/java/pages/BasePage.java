@@ -19,11 +19,7 @@ public class BasePage {
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, waitTimeInSeconds);
         try {
             WebElement visibleWebElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            if(visibleWebElement != null){
-                return true;
-            } else {
-                return false;
-            }
+          return visibleWebElement != null;
         } catch (NullPointerException | TimeoutException | NoSuchElementException e) {
             return false;
         }
